@@ -1,0 +1,14 @@
+diff --git a/src/libelogind/sd-netlink/netlink-types-rtnl.c b/src/libelogind/sd-netlink/netlink-types-rtnl.c
+index a1566bfbb..195ffb60b 100644
+--- a/src/libelogind/sd-netlink/netlink-types-rtnl.c
++++ b/src/libelogind/sd-netlink/netlink-types-rtnl.c
+@@ -19,8 +19,8 @@
+ #include <linux/if_bridge.h>
+ #include <linux/if_link.h>
+ #include <linux/if_macsec.h>
+-#include <linux/if_tunnel.h>
+ #include <linux/ip.h>
++#include <linux/if_tunnel.h>
+ #include <linux/l2tp.h>
+ #include <linux/net_namespace.h>
+ #include <linux/netlink.h>

@@ -1,0 +1,24 @@
+diff --git a/src/basic/musl_missing.h b/src/basic/musl_missing.h
+index 3f592f1c6..d7562dc99 100644
+--- a/src/basic/musl_missing.h
++++ b/src/basic/musl_missing.h
+@@ -60,6 +60,10 @@ void elogind_set_program_name(const char* pcall);
+         } ) )
+ #endif
+ 
++/* Poor man's basename */
++#define basename(path) \
++        (strrchr(path, '/') ? strrchr(path, '/')+1 : path)
++
+ /* getnameinfo(3) glibc extensions are undefined in musl libc */
+ #define NI_IDN 0
+ #define NI_IDN_USE_STD3_ASCII_RULES 0
+@@ -97,7 +101,7 @@ typedef int (*__compar_d_fn_t) (const void *, const void *, void *);
+  */
+ #define __register_atfork(prepare,parent,child,dso) pthread_atfork(prepare,parent,child)
+ 
+-/* 
++/*
+  * Missing FTW macros in musl, define them if not defined
+  * taken from
+  * https://git.yoctoproject.org/cgit.cgi/poky/plain/meta/recipes-core/systemd/systemd/0028-add-missing-FTW_-macros-for-musl.patch

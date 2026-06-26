@@ -1,0 +1,14 @@
+diff --git a/meson.build b/meson.build
+index bbf30d477..25940b31a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -159,6 +159,9 @@ if libexecdir != '' and not fs.is_absolute(libexecdir)
+ elif libexecdir == ''
+         libexecdir = prefixdir / 'lib/elogind'
+ endif
++
++libexecdir = libexecdir / 'elogind'
++
+ #endif // 0
+ pkglibdir = libdir / 'elogind'
+ 

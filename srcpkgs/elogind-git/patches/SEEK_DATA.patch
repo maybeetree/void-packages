@@ -1,0 +1,26 @@
+Upstream:no
+
+Our musl version doesn't expose the SEEK_DATA and SEEK_HOLE in `unisted.h`...
+Only version >= 1.2.3 do that.
+---
+ src/shared/copy.h | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/shared/copy.h b/src/shared/copy.h
+index 2031b3320..121b2ada4 100644
+--- a/src/shared/copy.h
++++ b/src/shared/copy.h
+@@ -116,5 +116,13 @@ static inline int copy_rights(int fdf, int fdt) {
+ #endif // 0
+ int copy_xattr(int df, const char *from, int dt, const char *to, CopyFlags copy_flags);
+ 
++#ifndef SEEK_DATA
++#define SEEK_DATA 3
++#endif
++
++#ifndef SEEK_HOLE
++#define SEEK_HOLE 4
++#endif
++
+ int reflink(int infd, int outfd);
+ int reflink_range(int infd, uint64_t in_offset, int outfd, uint64_t out_offset, uint64_t sz);
